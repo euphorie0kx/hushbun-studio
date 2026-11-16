@@ -223,3 +223,11 @@
 .studio-account-bar{position:fixed;right:16px;bottom:16px;z-index:99999;display:flex;gap:10px;align-items:center;padding:9px 13px;border:1px solid #5b4562;border-radius:15px;background:#1a1422ed;color:white;font:12px Inter,system-ui,sans-serif}
 .studio-account-bar button{border:1px solid #6e5676;background:#33243e;border-radius:9px;padding:7px 10px;color:white;cursor:pointer}
 .owner-edit{position:fixed;right:18px;bottom:18px;z-index:9999;padding:10px 15px;border:1px solid #c28fc2;border-radius:12px;background:#27182e;color:white;cursor:pointer;font:13px Inter,system-ui,sans-serif}
+
+/* V0.6.9.3 — Compte dans le panneau, sans chevauchement de la barre centrale */
+.live-elements .studio-account-bar{position:static;inset:auto;z-index:auto;margin:0 0 12px;padding:9px 7px;width:100%;box-sizing:border-box;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;border-radius:9px;border:1px solid #5b4562;background:#2b2031;color:white;font:11px Inter,system-ui,sans-serif;overflow-wrap:anywhere}
+.live-elements .studio-account-bar button{font:inherit;white-space:nowrap}
+.profile-share-controls{position:fixed;left:16px;bottom:16px;z-index:100;display:flex;gap:8px}
+.profile-share-controls button{border:1px solid #b38aae;border-radius:10px;background:#25192cdd;color:#f7e5f4;cursor:pointer;padding:10px 13px;font:12px Inter,system-ui,sans-serif;backdrop-filter:blur(12px)}
+.profile-share-controls button:hover{background:#513254}
+@media(max-width:600px){.profile-share-controls{left:8px;bottom:8px}.profile-share-controls button{font-size:11px;padding:8px}.live-toolbar-actions{flex-wrap:wrap;justify-content:center}}
