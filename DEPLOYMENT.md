@@ -1,20 +1,21 @@
-# hushbun. Studio 0.6.8 — Préparation Render
+# hushbun. Studio 0.6.9 — installation en ligne
 
-Cette archive est une base de déploiement **du prototype**, pas une plateforme multicomptes prête pour le public. Elle conserve son stockage local (localStorage et IndexedDB) ; les profils ne sont pas partagés entre visiteurs ou appareils. Ne pas la présenter comme une plateforme avec comptes utilisateurs.
+**Attention :** cette version ajoute des comptes **Studio indépendants** de la messagerie hushbun. Les deux authentifications ne sont pas encore unifiées.
 
-## Infrastructure
-- Répertoire Git indépendant de la messagerie hushbun. : ne pas pousser sur `euphorie0kx/hushbun`.
-- Nouveau service `hushbun-studio` distinct de `hushbun-private-beta`.
-- Règle Render incluse dans `render.yaml`, à lancer **uniquement après** mise du code dans un dépôt Git séparé.
-- Un sous-domaine `onrender.com` est créé par Render ; le domaine `hushbun.com` nécessitera une configuration DNS et des tests spécifiques.
+## Installation
 
-## Conditions avant ouverture au public
-1. Authentification et sessions sécurisées.
-2. Stockage serveur des profils et leurs médias, avec autorisations par utilisateur.
-3. Pages publiques récupérant les profils côté serveur en fonction du pseudo.
-4. Migration/export des données locales de l'utilisateur vers son compte, sans effacement.
-5. Limites de stockage et d'import, protections anti-abus, modération et mentions légales.
-6. Tests indépendants navigateur/ordinateur/mobile et gestion des bugs.
+1. Dans le dépôt GitHub `euphorie0kx/hushbun-studio`, remplacer les fichiers existants avec **tous** les fichiers de cette archive, sans ajouter un sous-dossier.
+2. Dans Render, créer un PostgreSQL distinct nommé `hushbun-studio-db` (région Frankfurt, idéalement la même que Studio).
+3. Dans Render > service `hushbun-studio` > Environment, ajouter `DATABASE_URL` à partir de l'URL **interne** de la base Studio (ne jamais exposer cette URL dans GitHub ou des captures).
+4. Définir `NODE_ENV=production` dans Render pour activer les cookies sécurisés.
+5. Le service existant `hushbun-studio` utilise déjà `npm install --ignore-scripts` et `npm start`, et peut redéployer sur chaque commit GitHub.
+6. Vérifier les logs Render : `DB ready` doit apparaître. Tester l'inscription, puis se déconnecter et se reconnecter.
+7. Dans `/studio`, cliquer sur « Importer un thème » et sélectionner le fichier `hushbun-theme-malsain-2026-11-16.json`. Les médias sont transférés vers la base de données. Pour les fichiers volumineux, garder l'onglet ouvert jusqu'à la confirmation.
+8. Vérifier la page publique `/malsain` depuis un autre navigateur privé et vérifier que l'éditeur n'est pas accessible en tant que visiteur.
 
-## Démarrage local
-`npm start` puis `http://localhost:4173/euphorie`.
+## Important avant ouverture à tous
+
+- La création de comptes doit encore être complétée par confirmation d'email, récupération de mot de passe, politique de conservation/modération des médias, quotas serveur et protections antibot plus fortes.
+- Les médias sont enregistrés dans PostgreSQL : prévoir un stockage objet dédié pour une diffusion publique à grande échelle.
+- Ne pas utiliser une base PostgreSQL Render éphémère/expirant comme stockage pérenne.
+- Ce projet ne modifie pas `hushbun-private-beta`.
