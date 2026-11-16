@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: hushbun-studio
+    runtime: node
+    plan: free
+    region: frankfurt
+    buildCommand: npm install --ignore-scripts
+    startCommand: npm start
+    autoDeployTrigger: commit
