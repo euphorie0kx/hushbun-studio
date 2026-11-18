@@ -322,3 +322,27 @@
 /* V0.7.0.3 — curseur toujours visible au-dessus de l'ecran Enter,
    sans intercepter les clics sur les boutons. */
 .profile-world.entry-active > .hb-custom-cursor{visibility:visible!important;pointer-events:none!important;z-index:10001!important}
+
+/* V0.7.0.4 — empêcher la sélection accidentelle du contenu des profils.
+   Ne touche pas aux champs de saisie de l'éditeur. */
+.profile-world, .profile-world *,
+.entry-overlay, .entry-overlay * {
+  -webkit-user-select: none !important;
+  user-select: none !important;
+  -webkit-touch-callout: none;
+}
+/* Préserver la sélection dans tout champ réellement éditable. */
+.profile-world :is(input,textarea,[contenteditable="true"]),
+.entry-overlay :is(input,textarea,[contenteditable="true"]) {
+  -webkit-user-select: text !important;
+  user-select: text !important;
+}
+
+/* V0.7.0.5 — action destructive dans Projet */
+.studio-project-menu .studio-project-danger {
+  color: #ffb4c5; border-top: 1px solid rgba(255,255,255,.15);
+  margin-top: 6px; padding-top: 11px;
+}
+.studio-project-menu .studio-project-danger:hover {
+  background: rgba(222,65,109,.14); color: #ffe0e8;
+}
