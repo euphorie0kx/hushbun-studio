@@ -267,39 +267,6 @@
  #publicView .profile-world .sound-slider-panel{max-width:calc(100vw - 24px)}
 }
 
-/* V0.6.9.5 — TEST PRIVÉ : effets sur les caractères, indépendants des bulles. */
-.hb-text-fx-wrapper{display:inline;white-space:inherit;overflow-wrap:inherit;--hb-tfx-duration:3.3s;--hb-tfx-strength:1;--hb-tfx-color:#f6a7e5}
-.hb-tfx-letter{display:inline-block;white-space:pre;animation-fill-mode:both}
-.hb-tfx-hover:not(:hover):not(:focus-within),.hb-tfx-hover:not(:hover):not(:focus-within) .hb-tfx-letter{animation:none!important}
-.hb-tfx-rainbow{animation:hb-tfx-hue var(--hb-tfx-duration) linear infinite}
-.hb-tfx-shimmer{background-image:linear-gradient(110deg,currentColor 20%,var(--hb-tfx-color) 47%,#fff 51%,var(--hb-tfx-color) 55%,currentColor 80%);background-size:280% 100%;background-clip:text;-webkit-background-clip:text;color:transparent!important;-webkit-text-fill-color:transparent;animation:hb-tfx-shine var(--hb-tfx-duration) linear infinite}
-.hb-tfx-neon{animation:hb-tfx-neon calc(var(--hb-tfx-duration)*.75) steps(1,end) infinite}
-.hb-tfx-wave .hb-tfx-letter{animation:hb-tfx-wave var(--hb-tfx-duration) ease-in-out infinite;animation-delay:calc(var(--hb-i)*-0.085s)}
-.hb-tfx-floating .hb-tfx-letter{animation:hb-tfx-float var(--hb-tfx-duration) ease-in-out infinite alternate;animation-delay:calc(var(--hb-i)*-0.11s)}
-.hb-tfx-glitch{animation:hb-tfx-glitch var(--hb-tfx-duration) steps(2,end) infinite}
-.hb-tfx-heartbeat{animation:hb-tfx-heartbeat var(--hb-tfx-duration) ease-in-out infinite;display:inline-block;transform-origin:center}
-.hb-tfx-blur{animation:hb-tfx-blur var(--hb-tfx-duration) ease-out both;display:inline-block}
-.hb-tfx-falling .hb-tfx-letter{animation:hb-tfx-fall var(--hb-tfx-duration) ease-in-out both;animation-delay:calc(var(--hb-i)*.035s)}
-.hb-tfx-typewriter .hb-tfx-letter{animation:hb-tfx-type calc(var(--hb-tfx-duration)*.13) steps(1,end) both;animation-delay:calc(var(--hb-i)*.065s)}
-.hb-tfx-scramble .hb-tfx-letter{animation:hb-tfx-scramble calc(var(--hb-tfx-duration)*.3) steps(2,end) both;animation-delay:calc(var(--hb-i)*.045s)}
-.hb-tfx-ghost{animation:hb-tfx-ghost var(--hb-tfx-duration) ease-in-out infinite}
-.hb-tfx-gradientflow{background:linear-gradient(90deg,var(--hb-tfx-color),#fbf2ff,#a7d8ff,var(--hb-tfx-color));background-size:250% 100%;background-clip:text;-webkit-background-clip:text;color:transparent!important;-webkit-text-fill-color:transparent;animation:hb-tfx-shine var(--hb-tfx-duration) linear infinite}
-.hb-tfx-sparkle{animation:hb-tfx-sparkle var(--hb-tfx-duration) ease-in-out infinite}
-@keyframes hb-tfx-hue{0%{filter:hue-rotate(0deg)}100%{filter:hue-rotate(360deg)}}
-@keyframes hb-tfx-shine{from{background-position:220% 0}to{background-position:-80% 0}}
-@keyframes hb-tfx-neon{0%,17%,23%,38%,100%{text-shadow:0 0 5px var(--hb-tfx-color),0 0 calc(10px * var(--hb-tfx-strength)) var(--hb-tfx-color)}18%,21%,39%{text-shadow:none;opacity:.6}}
-@keyframes hb-tfx-wave{0%,100%{transform:translateY(0)}50%{transform:translateY(calc(-6px * var(--hb-tfx-strength)))}}
-@keyframes hb-tfx-float{from{transform:translateY(calc(-3px * var(--hb-tfx-strength))) rotate(-2deg)}to{transform:translateY(calc(3px * var(--hb-tfx-strength))) rotate(2deg)}}
-@keyframes hb-tfx-glitch{0%,83%,100%{text-shadow:none;transform:translateX(0)}84%,87%{text-shadow:calc(-2px * var(--hb-tfx-strength)) 0 #ff4565,calc(2px * var(--hb-tfx-strength)) 0 #50dbff;transform:translateX(-1px)}88%,91%{text-shadow:2px 0 #ff4565,-2px 0 #50dbff;transform:translateX(1px)}}
-@keyframes hb-tfx-heartbeat{0%,40%,70%,100%{transform:scale(1)}44%{transform:scale(calc(1 + .06 * var(--hb-tfx-strength)))}51%{transform:scale(1)}57%{transform:scale(calc(1 + .035 * var(--hb-tfx-strength)))}}
-@keyframes hb-tfx-blur{from{opacity:0;filter:blur(calc(9px * var(--hb-tfx-strength)));transform:translateY(6px)}to{opacity:1;filter:blur(0);transform:translateY(0)}}
-@keyframes hb-tfx-fall{0%{opacity:0;transform:translateY(calc(-16px * var(--hb-tfx-strength))) rotate(-10deg)}65%{opacity:1}100%{opacity:1;transform:translateY(0) rotate(0)}}
-@keyframes hb-tfx-type{from{opacity:0}to{opacity:1}}
-@keyframes hb-tfx-scramble{0%{opacity:0;filter:blur(4px)}100%{opacity:1;filter:blur(0)}}
-@keyframes hb-tfx-ghost{0%,100%{text-shadow:0 0 transparent}50%{text-shadow:calc(3px * var(--hb-tfx-strength)) calc(2px * var(--hb-tfx-strength)) 2px var(--hb-tfx-color),calc(-3px * var(--hb-tfx-strength)) -1px 5px var(--hb-tfx-color)}}
-@keyframes hb-tfx-sparkle{0%,100%{text-shadow:none}30%,34%{text-shadow:0 0 calc(5px * var(--hb-tfx-strength)) white,0 0 calc(13px * var(--hb-tfx-strength)) var(--hb-tfx-color)}67%,72%{text-shadow:0 0 calc(9px * var(--hb-tfx-strength)) var(--hb-tfx-color)}}
-/* Preserve readable typography for users who request less motion. */
-@media(prefers-reduced-motion:reduce){.hb-tfx,.hb-tfx-letter{animation:none!important;opacity:1!important;filter:none!important;transform:none!important}.hb-tfx-shimmer,.hb-tfx-gradientflow{background:none!important;color:inherit!important;-webkit-text-fill-color:currentColor!important}}
 /* Private-test UI fixes */
 .owner-edit{display:none!important}
 .live-elements .studio-account-bar{position:relative;top:auto;left:auto;right:auto;bottom:auto}
@@ -329,3 +296,7 @@
 .studio-search-hit{display:flex;align-items:flex-start;flex-direction:column;gap:3px;width:100%;color:#f2e2f0;background:transparent;border:0;border-bottom:1px solid #ffffff12;text-align:left;padding:9px 10px;cursor:pointer;font-size:12px}
 .studio-search-hit:hover{background:#49304e}.studio-search-hit small{color:#c395bc;font-size:11px}
 .studio-search-count{font-size:11px;color:#bda6bd;padding:8px}
+
+/* V0.7.0.0 — pointeur masqué sur la scène réelle, y compris ses éléments */
+@media (pointer:fine){.profile-world.has-custom-cursor,.profile-world.has-custom-cursor *, .profile-world.has-custom-cursor *::before,.profile-world.has-custom-cursor *::after{cursor:none!important}}
+.studio-setting-target{outline:2px solid #ecabd5!important;outline-offset:4px;box-shadow:0 0 0 6px #e7a0d222!important;border-radius:6px}
