@@ -62,7 +62,7 @@ async function handler(req,res){
  if(req.method==='POST'&&path==='/api/logout'){const u=await session(req);if(u){const token=(req.headers.cookie||'').match(/(?:^|;\s*)hb_studio_session=([a-f0-9]{64})/)?.[1];if(token)await pool.query('DELETE FROM studio_sessions WHERE token_hash=$1',[sha(token)])}return json(res,200,{ok:true},{'Set-Cookie':cookie('',true)})}
  const u=await session(req);
  if(req.method==='GET'&&path==='/api/me')return json(res,200,{user:u?{username:u.username,email:u.email}:null});
- if(req.method==='GET'&&path==='/api/my-profile'){if(!u)return bad(res,401,'Connexion requise');const r=await pool.query('SELECT data FROM studio_profiles WHERE user_id=$1',[u.id]);return json(res,200,{profile:r.rows[0]?.data||{}})}
+ if(req.method==='GET'&&path==='/api/my-profile'){if(!u)return bad(res,401,'Connexion requise');const r=await pool.query('SELECT data,view_count FROM studio_profiles WHERE user_id=$1',[u.id]);return json(res,200,{profile:r.rows[0]?.data||{},views:Number(r.rows[0]?.view_count)||0})}
  if(req.method==='PUT'&&path==='/api/my-profile'){
   if(!u)return bad(res,401,'Connexion requise');const body=await readBody(req);if(!body.profile||typeof body.profile!=='object'||Array.isArray(body.profile))return bad(res,400,'Profil invalide');const p=body.profile;p.username=u.username;const raw=JSON.stringify(p);if(raw.length>1_000_000)return bad(res,413,'Profil trop volumineux');await pool.query('INSERT INTO studio_profiles(user_id,data) VALUES($1,$2) ON CONFLICT(user_id) DO UPDATE SET data=EXCLUDED.data,updated_at=NOW()',[u.id,raw]);return json(res,200,{ok:true})
  }

@@ -231,3 +231,38 @@
 .profile-share-controls button{border:1px solid #b38aae;border-radius:10px;background:#25192cdd;color:#f7e5f4;cursor:pointer;padding:10px 13px;font:12px Inter,system-ui,sans-serif;backdrop-filter:blur(12px)}
 .profile-share-controls button:hover{background:#513254}
 @media(max-width:600px){.profile-share-controls{left:8px;bottom:8px}.profile-share-controls button{font-size:11px;padding:8px}.live-toolbar-actions{flex-wrap:wrap;justify-content:center}}
+
+/* V0.6.9.4 — Mobile public simplifié ; aucune modification du rendu desktop ni de l'éditeur. */
+.mobile-simple-bio{display:none}
+@media(max-width:680px){
+ #publicView .profile-world{
+  height:100dvh;min-height:0;max-height:none;overflow:hidden;
+  display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;
+  gap:clamp(10px,2.3dvh,20px);padding:62px 14px 40px;
+ }
+ #publicView .profile-world>.profile-content{position:relative!important;left:auto!important;top:auto!important;transform:none!important;
+  order:1;width:100%!important;max-width:480px!important;max-height:32dvh!important;flex:0 0 auto;margin:0 auto;z-index:3}
+ #publicView .profile-world .profile-card{width:100%;min-height:0!important;padding:12px 14px;max-height:32dvh;overflow:auto;
+  align-items:center;text-align:center}
+ #publicView .profile-world .user-avatar{width:min(var(--avatar-size),80px);height:min(var(--avatar-size),80px)}
+ #publicView .profile-world .profile-name{font-size:clamp(17px,5vw,29px);line-height:1.2}
+ #publicView .profile-world .views-counter{position:static;display:block;margin-top:7px;opacity:.85}
+ #publicView .profile-world .mobile-simple-bio{display:flex;order:2;flex:1 1 auto;min-height:0;width:100%;max-width:480px;
+  margin:0 auto;padding:14px 16px;overflow:auto;overscroll-behavior:contain;
+  border-radius:17px;border:1px solid #ffffff4a;background:var(--mobile-bio-bg);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  color:var(--mobile-bio-ink);align-items:center;justify-content:center;text-align:var(--mobile-bio-align)}
+ #publicView .mobile-simple-bio-text{width:100%;font-size:var(--mobile-bio-font);line-height:1.45;
+  white-space:break-spaces;overflow-wrap:anywhere;max-height:100%;overflow-y:auto;
+  text-align:inherit}
+ #publicView .mobile-simple-bio-text.bubble-gradient-text{background:var(--mobile-bio-gradient);-webkit-background-clip:text;background-clip:text;color:transparent}
+ #publicView .profile-world>.music-card.music-free-position{position:relative!important;left:auto!important;top:auto!important;
+  transform:none!important;order:3;flex:0 0 auto;width:100%!important;max-width:480px!important;
+  margin:auto auto 0!important;z-index:5;padding:10px 12px;min-height:68px}
+ #publicView .profile-world .floating-bubble,#publicView .profile-world .studio-widget,
+ #publicView .profile-world .note-connection,#publicView .profile-world .note-tail,
+ #publicView .profile-world .note-orbit-guide{display:none!important}
+ #publicView .profile-world .profile-credit{bottom:9px;right:13px;font-size:10px}
+ #publicView .profile-world .profile-top-actions{top:8px;right:8px;z-index:12}
+ #publicView .profile-world .sound-slider-panel{max-width:calc(100vw - 24px)}
+}
