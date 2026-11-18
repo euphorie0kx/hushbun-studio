@@ -157,7 +157,7 @@
 .profile-world .entry-overlay{background:var(--entry-overlay,#1e1224eb);backdrop-filter:blur(var(--entry-blur,25px));-webkit-backdrop-filter:blur(var(--entry-blur,25px));color:var(--entry-ink,#fff)}
 
 /* v0.6.5: écran d'accueil isolé des calques du profil */
-.profile-world.entry-active > :not(.wallpaper):not(.wallpaper-shade):not(.entry-overlay){visibility:hidden!important;pointer-events:none!important}
+.profile-world.entry-active > :not(.wallpaper):not(.wallpaper-shade):not(.entry-overlay):not(.hb-custom-cursor){visibility:hidden!important;pointer-events:none!important}
 .profile-world.entry-active > .entry-overlay{visibility:visible!important;pointer-events:auto!important;z-index:1000}
 .user-badge{background:var(--badge)!important}
 /* Les animations des liaisons sont optionnelles ; aucune par défaut. */
@@ -318,3 +318,7 @@
 .hb-toast{position:fixed;right:18px;bottom:22px;z-index:2147483500;max-width:min(410px,calc(100vw - 36px));border:1px solid #b78ab0;border-radius:12px;background:#2d2037f2;color:#f9e8f7;box-shadow:0 12px 34px #0008;padding:13px 17px;font-size:13px;overflow-wrap:anywhere}.hb-toast.is-error{border-color:#f28ba9}
 @keyframes hbDialogFade{from{opacity:0}to{opacity:1}}@keyframes hbDialogRise{from{opacity:.4;transform:translateY(10px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
 @media(max-width:600px){.hb-dialog{padding:19px}.hb-dialog h2{font-size:18px}}@media(prefers-reduced-motion:reduce){.hb-dialog,.hb-dialog-backdrop{animation:none}}
+
+/* V0.7.0.3 — curseur toujours visible au-dessus de l'ecran Enter,
+   sans intercepter les clics sur les boutons. */
+.profile-world.entry-active > .hb-custom-cursor{visibility:visible!important;pointer-events:none!important;z-index:10001!important}
